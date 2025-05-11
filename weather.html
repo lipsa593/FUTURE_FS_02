@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weatherio</title>
+  <link rel="stylesheet" href="weather.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>☁️ Skycast</h1>
+      <div class="search-container">
+        <input type="text" id="cityInput" placeholder="Search city...">
+        <button id="addFavorite">⭐</button>
+        <select id="favorites">
+          <option value="">Favorite Cities</option>
+        </select>
+        <select id="unit-select">
+          <option value="metric">°C</option>
+          <option value="imperial">°F</option>
+          <option value="standard">K</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <div>
+        <div class="card now-section">
+          <h2>Now</h2>
+          <div class="temp" id="nowTemp">--°</div>
+          <div class="desc" id="nowDesc">Loading...</div>
+          <div class="info" id="nowDate">--</div>
+          <div class="info" id="nowLocation">--</div>
+        </div>
+
+        <div class="card forecast">
+          <h3>Daily Forecast</h3>
+          <div id="forecastContainer">
+            <!-- Example structure that will be generated dynamically:
+            <div class="forecast-day">
+              <span>🌤️ 25°</span>
+              <span>Mon, 12</span>
+            </div>
+            -->
+          </div>
+        </div>
+
+        <table class="climate-table">
+          <thead>
+            <tr>
+              <th>Climate information</th>
+              <th>All Years</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="icon">🌡️</span>Hottest month</td>
+              <td id="hotAll">--</td>
+            </tr>
+            <tr>
+              <td><span class="icon">🥶</span>Coldest month</td>
+              <td id="coldAll">--</td>
+            </tr>
+            <tr>
+              <td><span class="icon">☔️</span>Wettest month</td>
+              <td id="wetAll">--</td>
+            </tr>
+            <tr>
+              <td><span class="icon">💨</span>Windiest month</td>
+              <td id="windAll">--</td>
+            </tr>
+            <tr>
+              <td><span class="icon">☀️</span>Sunniest month</td>
+              <td id="sunAll">--</td>
+            </tr>
+            </tr>
+          </tbody>
+        </table>
+        <div id="month">
+            <div class="monthcontainer">
+              <div class="chart">
+                <div class="chart-inner">
+                  <span class="year" id="chartYear">--</span>
+                  <span class="month" id="chartMonth">--</span>
+                </div>
+              </div>
+              <div class="info">
+                <div><span class="label">Sunny/Cloudy days</span><span class="value" id="sunDays">--</span></div>
+                <div><span class="label">Rain/Snow days</span><span class="value" id="rainDays">--</span></div>
+                <div><span class="label">↑ Average high</span><span class="value" id="avgHigh">--</span></div>
+                <div><span class="label">↓ Average low</span><span class="value" id="avgLow">--</span></div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+
+      <div id="right-column">
+        <div class="card map-container">
+          <h3>Map</h3>
+          <iframe id="mapFrame"
+            src="https://maps.google.com/maps?q=51.5074,-0.1278&z=12&output=embed"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="card metrics-grid" id="metricsContainer">
+          <div class="metric">
+            <span class="label">💨 Wind</span>
+            <span class="value" id="windSpeed">--</span>
+          </div>
+          <div class="metric">
+            <span class="label">💧 Humidity</span>
+            <span class="value" id="humidity">--</span>
+          </div>
+          <div class="metric">
+            <span class="label">🌡️ Feels like</span>
+            <span class="value" id="feelsLike">--</span>
+          </div>
+          <div class="metric">
+            <span class="label">☁️ Clouds</span>
+            <span class="value" id="clouds">--</span>
+          </div>
+          <div class="metric">
+            <span class="label">👁️ Visibility</span>
+            <span class="value" id="visibility">--</span>
+          </div>
+          <div class="metric">
+            <span class="label">📊 Pressure</span>
+            <span class="value" id="pressure">--</span>
+          </div>
+        </div>
+        <div class="icons-row" id="hourlyForecast">
+          <canvas id="hourlyChart"></canvas>
+          <div class="hourly-details"></div>
+        </div>
+      </div>
+    </div>
+</div>
+    
+  </div>
+
+  <script src="weather.js"></script>
+</body>
+</html>
